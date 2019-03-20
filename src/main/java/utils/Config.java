@@ -3,7 +3,7 @@ package utils;
 public class Config {
 
     public static Boolean batchMode() {
-        return true;
+        return false;
     }
 
     public static String getAllPatternDir() {
