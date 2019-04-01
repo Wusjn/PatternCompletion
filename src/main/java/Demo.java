@@ -4,6 +4,10 @@ import com.github.javaparser.ast.body.FieldDeclaration;
 import com.github.javaparser.ast.body.Parameter;
 import com.github.javaparser.ast.body.VariableDeclarator;
 import com.github.javaparser.ast.expr.*;
+import com.github.javaparser.ast.stmt.BlockStmt;
+import com.github.javaparser.ast.stmt.ForStmt;
+import com.github.javaparser.ast.stmt.IfStmt;
+import com.github.javaparser.ast.stmt.TryStmt;
 import com.github.javaparser.ast.visitor.VoidVisitorAdapter;
 import com.github.javaparser.resolution.declarations.ResolvedMethodDeclaration;
 import com.github.javaparser.resolution.declarations.ResolvedValueDeclaration;
@@ -35,6 +39,14 @@ public class Demo {
     }
 
     private static class MethodCallVistor extends VoidVisitorAdapter<Void> {
+
+        @Override
+        public void visit(BlockStmt n,Void arg){
+            n.getParentNode().ifPresent(node ->{
+                System.out.println(node.getMetaModel());
+            });
+            super.visit(n,arg);
+        }
         @Override
         public void visit(MethodCallExpr n, Void arg) {
             /*

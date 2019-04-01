@@ -1,6 +1,8 @@
 package recommendator;
 
+import dataStructure.CreationPath.CreationPath;
 import dataStructure.PatternInstance;
+import javafx.util.Pair;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -56,7 +58,7 @@ public class FillerRecommendator {
         for (PatternInstance instance : patternInstances) {
             List<String> fillers;
             if (fullPath){
-                fillers = instance.pathSerialize();
+                fillers = instance.getCreationPathsAsString();
             }else {
                 fillers = instance.serialize();
             }

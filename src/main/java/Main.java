@@ -1,8 +1,11 @@
+import com.sun.tools.hat.internal.model.ReferenceChain;
 import dataStructure.AcceptedPattern;
 import dataStructure.PatternInstance;
 import extractor.PatternInstanceExtractor;
 import extractor.PatternInstanceFilter;
+import javafx.util.Pair;
 import recommendator.FillerRecommendator;
+import relationshipsFinder.ReferenceFinder;
 import relationshipsFinder.SimilarGroupFinder;
 import utils.Config;
 
@@ -38,8 +41,13 @@ public class Main {
         recordPatternInstances(patternInstances, patternDir + "/instances");
 
 
-        SimilarGroupFinder finder = SimilarGroupFinder.getInstance();
-        List<List<Integer>> groups = finder.find(patternInstances, Config.getThreshold());
+        SimilarGroupFinder groupFinder = SimilarGroupFinder.getInstance();
+        List<List<Integer>> groups = groupFinder.find(patternInstances, Config.getThreshold());
+        patternInstances = PatternInstanceFilter.groupFilter(patternInstances,groups);
+
+        ReferenceFinder referenceFinder = ReferenceFinder.getInstance();
+        List<Pair<Integer,Integer>> referencePairs = referenceFinder.find(patternInstances,groups,Config.getThreshold());
+        patternInstances = PatternInstanceFilter.referenceFilter(patternInstances,groups,referencePairs);
 
 
         FillerRecommendator fillerRecommendator = FillerRecommendator.getInstance();
@@ -48,7 +56,7 @@ public class Main {
 
 
         AcceptedPattern acceptedPattern = new AcceptedPattern(patternInstances.get(0));
-        acceptedPattern.accept(fillerRecommendation, fillerPathRecommendation, groups);
+        acceptedPattern.accept(fillerRecommendation, fillerPathRecommendation, groups, referencePairs);
         System.out.println(acceptedPattern);
 
         try {

@@ -19,4 +19,7 @@ public class CreationPath {
         }
         return result;
     }
+    public CreationPathNode get(int index){
+        return creationPathNodes.get(creationPathNodes.size()-(1+index));
+    }
 }

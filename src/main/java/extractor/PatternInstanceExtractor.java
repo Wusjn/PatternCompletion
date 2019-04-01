@@ -4,6 +4,8 @@ import com.github.javaparser.JavaParser;
 import com.github.javaparser.ast.CompilationUnit;
 import com.github.javaparser.ast.body.MethodDeclaration;
 import com.github.javaparser.ast.expr.MethodCallExpr;
+import com.github.javaparser.ast.stmt.BlockStmt;
+import com.github.javaparser.ast.stmt.ForStmt;
 import com.github.javaparser.ast.visitor.VoidVisitorAdapter;
 import com.github.javaparser.symbolsolver.JavaSymbolSolver;
 import com.github.javaparser.symbolsolver.model.resolution.TypeSolver;
@@ -18,6 +20,7 @@ import utils.DirExplorer;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 public class PatternInstanceExtractor {
     //Singleton
@@ -99,8 +102,11 @@ public class PatternInstanceExtractor {
 
 
     private class extractorVisitor implements DirExplorer.FileHandler {
+        private Stack<Integer> currentFocusApiStack = new Stack<>();
+        private Stack<PatternInstance> patternInstanceStack = new Stack<>();
         private int currentFocusApi;
         private PatternInstance patternInstance;
+        private int mainFunctionNumber;
 
         @Override
         public void handle(int level, String path, File file) {
@@ -110,9 +116,32 @@ public class PatternInstanceExtractor {
                 cu.accept(
                         new VoidVisitorAdapter<Object>() {
                             public void visit(MethodDeclaration n, Object arg) {
+                                /*if (n.getNameAsString().equals("main")){
+                                    System.out.println("main function exist");
+                                    mainFunctionNumber+=1;
+                                    System.out.println("current total number : " + mainFunctionNumber);
+                                }*/
                                 currentFocusApi = 0;
                                 patternInstance = new PatternInstance();
                                 super.visit(n, arg);
+                            }
+
+                            public void visit(BlockStmt n, Object arg){
+                                n.getParentNode().ifPresent(node ->{
+                                    if (!(node instanceof MethodDeclaration)){
+                                        currentFocusApiStack.push(currentFocusApi);
+                                        patternInstanceStack.push(patternInstance);
+                                        currentFocusApi = 0;
+                                        patternInstance = new PatternInstance();
+                                        //System.out.println("push");
+                                        super.visit(n, arg);
+                                        //System.out.println("pop");
+                                        currentFocusApi = currentFocusApiStack.pop();
+                                        patternInstance = patternInstanceStack.pop();
+                                    }else{
+                                        super.visit(n,arg);
+                                    }
+                                });
                             }
 
                             public void visit(MethodCallExpr n, Object arg) {
@@ -124,6 +153,7 @@ public class PatternInstanceExtractor {
                                 patternInstance.addLine(new PatternInstanceLine(n));
                                 if (currentFocusApi == instance.patternApis.size()) {
                                     currentFocusApi = 0;
+                                    patternInstance.trackCreationPaths();
                                     instance.patternInstances.add(patternInstance);
                                     patternInstance = new PatternInstance();
                                 }

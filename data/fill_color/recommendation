@@ -7,7 +7,7 @@ style.setFillPattern(<2>);
 <0>  :  workbook  ( Path = new XSSFWorkbook() )  ( Type = org.apache.poi.ss.usermodel.Workbook )
 <1>  :  IndexedColors.PINK.getIndex()  ( Path = IndexedColors.PINK.getIndex() )  ( Type = short )
 <2>  :  FillPatternType.SOLID_FOREGROUND  ( Path = FillPatternType.SOLID_FOREGROUND )  ( Type = org.apache.poi.ss.usermodel.FillPatternType )
-<3>  :  cell  ( Path = new XSSFWorkbook().createSheet().createRow().createCell() )  ( Type = org.apache.poi.ss.usermodel.Cell )
+<3>  :  cell  ( Path = workbook.createSheet().createRow().createCell() )  ( Type = org.apache.poi.ss.usermodel.Cell )
 
 setCellStyle  :  org.apache.poi.ss.usermodel.Cell.setCellStyle(org.apache.poi.ss.usermodel.CellStyle)
 setFillPattern  :  org.apache.poi.ss.usermodel.CellStyle.setFillPattern(org.apache.poi.ss.usermodel.FillPatternType)

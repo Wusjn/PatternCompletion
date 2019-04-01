@@ -1,7 +1,11 @@
 package extractor;
 
+import dataStructure.CreationPath.CreationPath;
+import dataStructure.CreationPath.CreationPathNode;
+import dataStructure.CreationPath.CreationPathReferenceNode;
 import dataStructure.PatternInstance;
 import dataStructure.PatternInstanceLine;
+import javafx.util.Pair;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -51,6 +55,74 @@ public class PatternInstanceFilter {
             }
         }
         return normalPatternInstances;
+    }
+
+    private static boolean matchGroups(PatternInstance patternInstance, List<List<Integer>> groups){
+        List<String> fillers = patternInstance.serialize();
+        for (List<Integer> group : groups){
+            String content = null;
+            for (int i : group){
+                if (content == null){
+                    content = fillers.get(i);
+                }else if (content.equals(fillers.get(i))){
+                    continue;
+                }else{
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    public static List<PatternInstance> groupFilter(List<PatternInstance> patternInstances, List<List<Integer>> groups){
+        System.out.println("Before Filter : PatternInstance Number = " + patternInstances.size());
+        List<PatternInstance> legalPatternInstances = new ArrayList<>();
+        for (PatternInstance patternInstance : patternInstances){
+            if (matchGroups(patternInstance,groups)){
+                legalPatternInstances.add(patternInstance);
+            }
+        }
+        System.out.println("After Filter : PatternInstance Number = " + legalPatternInstances.size());
+        return legalPatternInstances;
+    }
+
+    private static boolean matchReference(PatternInstance instance,
+                                          List<List<Integer>> groups,
+                                          List<Pair<Integer,Integer>> referencePairs){
+        List<CreationPath> creationPaths = instance.getCreationPaths();
+        if (!matchGroups(instance,groups)){
+            return false;
+        }
+        for (Pair<Integer,Integer> referencePair : referencePairs){
+            boolean passReferenceCheck = false;
+            CreationPath sourceCreationPath = creationPaths.get(groups.get(referencePair.getKey()).get(0));
+            CreationPathNode sourceCreationPathFirstNode = sourceCreationPath.get(0);
+            if (sourceCreationPathFirstNode instanceof CreationPathReferenceNode){
+                int targetPosition = ((CreationPathReferenceNode) sourceCreationPathFirstNode).referencePosition;
+                if (groups.get(referencePair.getValue()).contains(targetPosition)){
+                    passReferenceCheck = true;
+                }
+            }
+            if (!passReferenceCheck){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static List<PatternInstance> referenceFilter(
+            List<PatternInstance> patternInstances,
+            List<List<Integer>> groups,
+            List<Pair<Integer,Integer>> referencePairs){
+        System.out.println("Before Filter : PatternInstance Number = " + patternInstances.size());
+        List<PatternInstance> legalPatternInstances = new ArrayList<>();
+        for (PatternInstance patternInstance : patternInstances){
+            if (matchReference(patternInstance,groups,referencePairs)){
+                legalPatternInstances.add(patternInstance);
+            }
+        }
+        System.out.println("After Filter : PatternInstance Number = " + legalPatternInstances.size());
+        return legalPatternInstances;
     }
 
     public static List<PatternInstance> filter(List<PatternInstance> patternInstances) {

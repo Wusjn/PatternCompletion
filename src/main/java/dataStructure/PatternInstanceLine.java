@@ -35,19 +35,9 @@ public class PatternInstanceLine implements Cloneable {
 
     private String AssignTarget;
     private String AssignTargetType;
+    private Node AssignTargetNode;
 
-    public List<CreationPath> creationPaths = new ArrayList<>();
-
-    public List<String> pathSerialize(){
-        ArrayList<String> holeInstance = new ArrayList<>();
-        if (mode == Mode.ASSIGN) {
-            holeInstance.add(AssignTarget);
-        }
-        for (CreationPath creationPath:creationPaths){
-            holeInstance.add(creationPath.toString());
-        }
-        return holeInstance;
-    }
+    public List<Node> trackingFillers = new ArrayList<>();
 
 
     public List<String> serialize() {
@@ -116,79 +106,9 @@ public class PatternInstanceLine implements Cloneable {
         }
     }
 
-    private CreationPath parse(Node focusNode){
-        CreationPath creationPath = new CreationPath();
-        while (focusNode != null){
-            if (focusNode instanceof MethodCallExpr){
-                MethodCallExpr methodCallExpr = (MethodCallExpr) focusNode;
-                ResolvedMethodDeclaration resolvedMethodDeclaration = methodCallExpr.resolve();
-
-                creationPath.addNode(new CreationPathMethodNode(
-                        resolvedMethodDeclaration.getQualifiedSignature(),
-                        methodCallExpr.getNameAsString()
-                ));
-
-                Optional<Expression> caller = methodCallExpr.getScope();
-                if (caller.isPresent()){
-                    focusNode = caller.get();
-                } else {
-                    break;
-                }
-            } else if(focusNode instanceof ObjectCreationExpr || focusNode instanceof FieldAccessExpr){
-                creationPath.addNode(new CreationPathOthersNode( focusNode.toString()));
-                break;
-            } else if (focusNode instanceof NameExpr){
-                ResolvedValueDeclaration resolvedValueDeclaration = ((NameExpr) focusNode).resolve();
-                if (resolvedValueDeclaration instanceof JavaParserSymbolDeclaration){
-                    JavaParserSymbolDeclaration symbolDeclaration = ((JavaParserSymbolDeclaration)resolvedValueDeclaration);
-                    VariableDeclarator variableDeclarator = (VariableDeclarator)symbolDeclaration.getWrappedNode();
-                    Optional<Expression> initializer = variableDeclarator.getInitializer();
-
-                    if (initializer.isPresent()){
-                        focusNode = initializer.get();
-                    }else {
-                        creationPath.addNode(new CreationPathVariableNode(
-                                variableDeclarator.getTypeAsString(),
-                                variableDeclarator.getNameAsString()
-                        ));
-                        break;
-                    }
-                }else if (resolvedValueDeclaration instanceof JavaParserParameterDeclaration){
-                    JavaParserParameterDeclaration parameterDeclaration = ((JavaParserParameterDeclaration)resolvedValueDeclaration);
-                    Parameter parameter = parameterDeclaration.getWrappedNode();
-                    creationPath.addNode(new CreationPathVariableNode(parameter.getTypeAsString(), parameter.getNameAsString()));
-                    break;
-                }else{
-                    break;
-                }
-            } else {
-                creationPath.addNode(new CreationPathOthersNode(focusNode.toString()));
-                break;
-            }
-        }
-        return creationPath;
-    }
-
-    private void trackCreationPaths(List<Node> fillers){
-        for (Node filler : fillers){
-            CreationPath path;
-            try {
-                path = parse(filler);
-            }catch (UnsolvedSymbolException e){
-                if (Config.debug()){
-                    e.printStackTrace();
-                }
-                path = new CreationPath();
-                path.addNode(new CreationPathOthersNode("unsolved"));
-                //System.out.println(filler.toString());
-            }
-            creationPaths.add(path);
-        }
-    }
-
     public PatternInstanceLine(MethodCallExpr n) {
+
         ResolvedMethodDeclaration rn;
-        List<Node> trackingFillers = new ArrayList<>();
         try {
             rn = n.resolve();
         } catch (Exception e) {
@@ -200,30 +120,17 @@ public class PatternInstanceLine implements Cloneable {
             return;
         }
 
-        fillSignature(rn.getQualifiedSignature());
-
-        callerExist = n.getScope().isPresent();
-        n.getScope().ifPresent(caller -> {
-            MethodCaller = caller.toString();
-            trackingFillers.add(caller);
-        });
-
-        for (Expression e : n.getArguments()) {
-            MethodParameters.add(e.toString());
-            trackingFillers.add(e);
-        }
-
-        trackCreationPaths(trackingFillers);
-
         n.getParentNode().ifPresent(parent -> {
             if (parent instanceof VariableDeclarator) {
                 mode = Mode.ASSIGN;
                 AssignTargetType = ((VariableDeclarator) parent).getTypeAsString();
                 AssignTarget = ((VariableDeclarator) parent).getNameAsString();
+                AssignTargetNode = parent;
             } else if (parent instanceof AssignExpr) {
                 mode = Mode.ASSIGN;
                 AssignTargetType = rn.getReturnType().describe();
                 AssignTarget = ((AssignExpr) parent).getTarget().toString();
+                AssignTargetNode = ((AssignExpr) parent).getTarget();
             } else if (parent instanceof ExpressionStmt) {
                 mode = Mode.METHODCALL;
             } else {
@@ -237,6 +144,24 @@ public class PatternInstanceLine implements Cloneable {
                 return;
             }
         });
+
+        fillSignature(rn.getQualifiedSignature());
+
+        if (mode == Mode.ASSIGN) {
+            trackingFillers.add(AssignTargetNode);
+        }
+
+        callerExist = n.getScope().isPresent();
+        n.getScope().ifPresent(caller -> {
+            MethodCaller = caller.toString();
+            trackingFillers.add(caller);
+        });
+
+        for (Expression e : n.getArguments()) {
+            MethodParameters.add(e.toString());
+            trackingFillers.add(e);
+        }
+
         /*
         if (serialize().size()!=pathSerialize().size()){
             System.out.println(serialize());

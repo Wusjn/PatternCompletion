@@ -1,5 +1,6 @@
 package dataStructure;
 
+import javafx.util.Pair;
 import utils.MostFrequentStringFinder;
 
 import java.util.ArrayList;
@@ -11,6 +12,7 @@ public class AcceptedPattern {
     private List<String> pathRecommendation;
     private List<String> groupTypes;
     private List<List<Integer>> groups;
+    private List<Pair<Integer,Integer>> referencePairs;
 
     public AcceptedPattern(PatternInstance instance) {
         this.instance = (PatternInstance) instance.clone();
@@ -41,11 +43,17 @@ public class AcceptedPattern {
     }
 
 
-    public void accept(List<String> recommendation, List<String> pathRecommendation, List<List<Integer>> groups) {
+    public void accept(List<String> recommendation, List<String> pathRecommendation, List<List<Integer>> groups, List<Pair<Integer,Integer>> referencePairs) {
         this.recommendation = recommendation;
-        this.pathRecommendation = pathRecommendation;
         this.groups = groups;
+        this.referencePairs = referencePairs;
         countGroupTypes();
+        this.pathRecommendation = new ArrayList<>();
+        this.pathRecommendation.addAll(pathRecommendation);
+        for (Pair<Integer,Integer> referencePair : referencePairs){
+            String completePath = recommendation.get(referencePair.getValue()) + pathRecommendation.get(referencePair.getKey());
+            this.pathRecommendation.set(referencePair.getKey(),completePath);
+        }
 
         String[] placeholders = new String[instance.serialize().size()];
         int counter = 0;
