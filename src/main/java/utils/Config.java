@@ -2,7 +2,7 @@ package utils;
 
 public class Config {
 
-    public static Boolean batchMode() {
+    public static boolean batchMode() {
         return false;
     }
 
@@ -18,8 +18,10 @@ public class Config {
         return false;
     }
 
-    public static double getThreshold() {
+    public static double getSimilarThreshold() {
         return 0.95;
     }
-
+    public static double getReferenceThreshold() {
+        return 0.95;
+    }
 }

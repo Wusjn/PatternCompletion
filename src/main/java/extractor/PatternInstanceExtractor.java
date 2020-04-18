@@ -61,8 +61,7 @@ public class PatternInstanceExtractor {
         patternApis = new ArrayList<>();
         try {
             BufferedReader reader = new BufferedReader(new FileReader(patternFilePath));
-            String patternAndFrequency = reader.readLine();
-            String pattern = patternAndFrequency.substring(0, patternAndFrequency.lastIndexOf(" :"));
+            String pattern = reader.readLine();
             for (String methodCall : pattern.split(" ")) {
                 patternApis.add(methodCall);
             }

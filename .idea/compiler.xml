@@ -21,6 +21,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="PatternCompletion" />
+        <module name="explore_javaParser" />
       </profile>
     </annotationProcessing>
   </component>

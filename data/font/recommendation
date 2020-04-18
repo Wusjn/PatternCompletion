@@ -9,9 +9,9 @@ font.setFontHeight(<2>);
 <2>  :  (short) 200  ( Path = (short) 200 )  ( Type = short )
 <3>  :  cellStyle  ( Path = getBaseStyle() )  ( Type = org.apache.poi.hssf.usermodel.HSSFCellStyle )
 
+HSSFFont  :  org.apache.poi.hssf.usermodel.HSSFFont
 setFontName  :  org.apache.poi.hssf.usermodel.HSSFFont.setFontName(java.lang.String)
 setFont  :  org.apache.poi.hssf.usermodel.HSSFCellStyle.setFont(org.apache.poi.hssf.usermodel.HSSFFont)
 setFontHeight  :  org.apache.poi.hssf.usermodel.HSSFFont.setFontHeight(short)
-HSSFFont  :  HSSFFont
 createFont  :  org.apache.poi.hssf.usermodel.HSSFWorkbook.createFont()
 ------------------------------------

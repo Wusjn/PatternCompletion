@@ -1,4 +1,3 @@
-import com.sun.tools.hat.internal.model.ReferenceChain;
 import dataStructure.AcceptedPattern;
 import dataStructure.PatternInstance;
 import extractor.PatternInstanceExtractor;
@@ -42,11 +41,11 @@ public class Main {
 
 
         SimilarGroupFinder groupFinder = SimilarGroupFinder.getInstance();
-        List<List<Integer>> groups = groupFinder.find(patternInstances, Config.getThreshold());
+        List<List<Integer>> groups = groupFinder.find(patternInstances, Config.getSimilarThreshold());
         patternInstances = PatternInstanceFilter.groupFilter(patternInstances,groups);
 
         ReferenceFinder referenceFinder = ReferenceFinder.getInstance();
-        List<Pair<Integer,Integer>> referencePairs = referenceFinder.find(patternInstances,groups,Config.getThreshold());
+        List<Pair<Integer,Integer>> referencePairs = referenceFinder.find(patternInstances,groups,Config.getReferenceThreshold());
         patternInstances = PatternInstanceFilter.referenceFilter(patternInstances,groups,referencePairs);
 
 

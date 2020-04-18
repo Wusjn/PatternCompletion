@@ -5,7 +5,6 @@ import dataStructure.CreationPath.CreationPathNode;
 import dataStructure.CreationPath.CreationPathReferenceNode;
 import dataStructure.PatternInstance;
 import javafx.util.Pair;
-import org.omg.PortableInterceptor.INACTIVE;
 import utils.Config;
 
 import java.util.ArrayList;

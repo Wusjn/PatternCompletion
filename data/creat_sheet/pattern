@@ -1,1 +1,1 @@
-createSheet createSafeSheetName write close : 23
+createSheet createSafeSheetName write close

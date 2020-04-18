@@ -10,10 +10,10 @@ String safeName = <2>.createSafeSheetName(<3>);
 <3>  :  "[O'Brien's sales*?]"  ( Path = "[O'Brien's sales*?]" )  ( Type = java.lang.String )
 <4>  :  fileOut  ( Path = new FileOutputStream("workbook.xls") )  ( Type = java.io.OutputStream )
 
-String  :  String
+Sheet  :  org.apache.poi.ss.usermodel.Sheet
+String  :  java.lang.String
 close  :  java.io.FileOutputStream.close()
 write  :  org.apache.poi.ss.usermodel.Workbook.write(java.io.OutputStream)
 createSheet  :  org.apache.poi.ss.usermodel.Workbook.createSheet(java.lang.String)
 createSafeSheetName  :  org.apache.poi.ss.util.WorkbookUtil.createSafeSheetName(java.lang.String)
-Sheet  :  Sheet
 ------------------------------------

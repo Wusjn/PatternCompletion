@@ -1,8 +1,4 @@
-CellStyle cellStyle = wb.createCellStyle();
-cellStyle.setAlignment(HorizontalAlignment.CENTER);
-cell.setCellStyle(cellStyle);
-
-CellStyle style = workbook.createCellStyle();
-style.setAlignment(HorizontalAlignment.CENTER);
-cell.setCellStyle(style);
+XSSFCellStyle cs = workBook.createCellStyle();
+cs.setAlignment(HorizontalAlignment.CENTER);
+c.setCellStyle(cs);
 

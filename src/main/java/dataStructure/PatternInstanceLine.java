@@ -123,7 +123,7 @@ public class PatternInstanceLine implements Cloneable {
         n.getParentNode().ifPresent(parent -> {
             if (parent instanceof VariableDeclarator) {
                 mode = Mode.ASSIGN;
-                AssignTargetType = ((VariableDeclarator) parent).getTypeAsString();
+                AssignTargetType = rn.getReturnType().describe();
                 AssignTarget = ((VariableDeclarator) parent).getNameAsString();
                 AssignTargetNode = parent;
             } else if (parent instanceof AssignExpr) {
