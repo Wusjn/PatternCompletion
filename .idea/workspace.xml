@@ -2,60 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b45fdc75-0efa-43c7-9c7b-b0346bac262a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/align_cell/instances" beforeDir="false" afterPath="$PROJECT_DIR$/data/align_cell/instances" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/align_cell/pattern" beforeDir="false" afterPath="$PROJECT_DIR$/data/align_cell/pattern" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/align_cell/recommendation" beforeDir="false" afterPath="$PROJECT_DIR$/data/align_cell/recommendation" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/creat_sheet/instances" beforeDir="false" afterPath="$PROJECT_DIR$/data/creat_sheet/instances" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/creat_sheet/pattern" beforeDir="false" afterPath="$PROJECT_DIR$/data/creat_sheet/pattern" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/creat_sheet/recommendation" beforeDir="false" afterPath="$PROJECT_DIR$/data/creat_sheet/recommendation" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/draw_border/instances" beforeDir="false" afterPath="$PROJECT_DIR$/data/draw_border/instances" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/draw_border/pattern" beforeDir="false" afterPath="$PROJECT_DIR$/data/draw_border/pattern" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/fill_color/instances" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/fill_color/pattern" beforeDir="false" afterPath="$PROJECT_DIR$/data/fill_color/pattern" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/fill_color/recommendation" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/font/pattern" beforeDir="false" afterPath="$PROJECT_DIR$/data/font/pattern" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/font/recommendation" beforeDir="false" afterPath="$PROJECT_DIR$/data/font/recommendation" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/hyperlink/instances" beforeDir="false" afterPath="$PROJECT_DIR$/data/hyperlink/instances" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/hyperlink/pattern" beforeDir="false" afterPath="$PROJECT_DIR$/data/hyperlink/pattern" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/hyperlink/recommendation" beforeDir="false" afterPath="$PROJECT_DIR$/data/hyperlink/recommendation" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/set_cell_comment/pattern" beforeDir="false" afterPath="$PROJECT_DIR$/data/set_cell_comment/pattern" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/set_cell_comment/recommendation" beforeDir="false" afterPath="$PROJECT_DIR$/data/set_cell_comment/recommendation" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/poi/poi-3.17.jar" beforeDir="false" afterPath="$PROJECT_DIR$/jar/poi-3.17.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/poi/poi-ooxml-3.17.jar" beforeDir="false" afterPath="$PROJECT_DIR$/jar/poi-ooxml-3.17.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dataStructure/PatternInstanceLine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dataStructure/PatternInstanceLine.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/extractor/PatternInstanceExtractor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/extractor/PatternInstanceExtractor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/relationshipsFinder/ReferenceFinder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/relationshipsFinder/ReferenceFinder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/Config.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Demo$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Demo$MethodCallVistor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Demo$MethodCallVistor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Demo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Demo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dataStructure/AcceptedPattern.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dataStructure/AcceptedPattern.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dataStructure/CreationPath/CreationPath.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dataStructure/CreationPath/CreationPath.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dataStructure/CreationPath/CreationPathMethodNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dataStructure/CreationPath/CreationPathMethodNode.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dataStructure/CreationPath/CreationPathNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dataStructure/CreationPath/CreationPathNode.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dataStructure/CreationPath/CreationPathOthersNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dataStructure/CreationPath/CreationPathOthersNode.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dataStructure/CreationPath/CreationPathVariableNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dataStructure/CreationPath/CreationPathVariableNode.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dataStructure/PatternInstance.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dataStructure/PatternInstance.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dataStructure/PatternInstanceLine$Mode.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dataStructure/PatternInstanceLine$Mode.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dataStructure/PatternInstanceLine.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dataStructure/PatternInstanceLine.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/extractor/PatternInstanceExtractor$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/extractor/PatternInstanceExtractor$extractorVisitor$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/extractor/PatternInstanceExtractor$extractorVisitor$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/extractor/PatternInstanceExtractor$extractorVisitor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/extractor/PatternInstanceExtractor$extractorVisitor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/extractor/PatternInstanceExtractor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/extractor/PatternInstanceExtractor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/extractor/PatternInstanceFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/extractor/PatternInstanceFilter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/recommendator/FillerRecommendator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/recommendator/FillerRecommendator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/relationshipsFinder/SimilarGroupFinder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/relationshipsFinder/SimilarGroupFinder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/utils/Config.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/utils/Config.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/utils/DirExplorer$FileFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/utils/DirExplorer$FileFilter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/utils/DirExplorer$FileHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/utils/DirExplorer$FileHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/utils/DirExplorer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/utils/DirExplorer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/utils/LastNameFinder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/utils/LastNameFinder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/utils/MostFrequentStringFinder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/utils/MostFrequentStringFinder.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -104,7 +57,7 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -171,7 +124,8 @@
       <workItem from="1553081205858" duration="250000" />
       <workItem from="1553843817923" duration="232000" />
       <workItem from="1554031844302" duration="22145000" />
-      <workItem from="1587195116452" duration="2878000" />
+      <workItem from="1587195116452" duration="3980000" />
+      <workItem from="1587204187355" duration="3961000" />
     </task>
     <servers />
   </component>
@@ -199,7 +153,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>

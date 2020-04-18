@@ -45,8 +45,8 @@ public class PatternInstanceExtractor {
     private void initializeSymbolSolver() {
         try {
             TypeSolver reflectionTypeSolver = new ReflectionTypeSolver();
-            TypeSolver jarTypeSolver = new JarTypeSolver("poi/poi-3.17.jar");
-            TypeSolver jarTypeSolver2 = new JarTypeSolver("poi/poi-ooxml-3.17.jar");
+            TypeSolver jarTypeSolver = new JarTypeSolver("jar/poi-3.17.jar");
+            TypeSolver jarTypeSolver2 = new JarTypeSolver("jar/poi-ooxml-3.17.jar");
             TypeSolver combinedTypeSolver = new CombinedTypeSolver(reflectionTypeSolver, jarTypeSolver, jarTypeSolver2);
 
             JavaSymbolSolver symbolSolver = new JavaSymbolSolver(combinedTypeSolver);
